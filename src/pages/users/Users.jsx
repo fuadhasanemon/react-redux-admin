@@ -1,7 +1,13 @@
 import patient1 from "../../assets/img/patients/patient1.jpg";
 import doctor1 from "../../assets/img/doctors/doctor-thumb-02.jpg";
+import ModalPopup from "../../components/ModalPopup/ModalPopup";
+import { useEffect } from "react";
+import DataTable from "datatables.net-dt";
 
 const Users = () => {
+  useEffect(() => {
+    new DataTable(".datatable");
+  });
   return (
     <>
       <div className="page-header">
@@ -15,15 +21,33 @@ const Users = () => {
         </div>
       </div>
 
+      <ModalPopup target="userModalPopup">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, quo!
+          Inventore nobis temporibus esse blanditiis exercitationem neque facere
+          natus corporis deleniti. Maxime reiciendis iste, atque blanditiis odit
+          placeat? Illum blanditiis, hic placeat eveniet dolor quisquam vero
+          quos. Aliquid eum explicabo dignissimos id quas, sapiente corrupti
+          pariatur veritatis amet sint quae.
+        </p>
+      </ModalPopup>
+
       <div className="row">
         <div className="col-md-12">
+          <button
+            className="btn btn-primary mb-2"
+            data-target="#userModalPopup"
+            data-toggle="modal"
+          >
+            Add new user
+          </button>
           <div className="card card-table">
             <div className="card-header">
               <h4 className="card-title">Appointment List</h4>
             </div>
             <div className="card-body">
-              <div className="table-responsive">
-                <table className="table table-hover table-center mb-0">
+              <div className="table-responsive p-4">
+                <table className="datatable table table-hover table-center mb-0">
                   <thead>
                     <tr>
                       <th>Doctor Name</th>

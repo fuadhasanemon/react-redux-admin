@@ -1,0 +1,25 @@
+.dt-search {
+    display: none;
+}
+
+.dt-layout-row:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dt-layout-table .dt-length label {
+    margin-bottom: 0;
+}
+
+.dt-length select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
+.paging_full_numbers {
+    display: flex;
+    gap: 5px;
+}
