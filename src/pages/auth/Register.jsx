@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import logoWhite from "../../assets/img/logo-white.png";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../features/auth/authApiSlice";
 import { sweetalertStandard } from "../../utils/sweetAlert";
+import { createToast } from "../../utils/toast";
+import { setMessageEmpty } from "../../features/auth/authSlice";
 
 const Register = () => {
   const dispatch = useDispatch();
+
+  const { error, message } = useSelector(state => state.auth);
 
   const [input, setInput] = useState({
     name: "",
@@ -59,6 +63,17 @@ const Register = () => {
       });
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      createToast(error);
+      dispatch(setMessageEmpty());
+    }
+    if (message) {
+      createToast(message, "success");
+      dispatch(setMessageEmpty());
+    }
+  }, [error, message]);
 
   return (
     <>
