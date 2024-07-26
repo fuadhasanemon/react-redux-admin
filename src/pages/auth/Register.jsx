@@ -10,31 +10,32 @@ import { setMessageEmpty } from "../../features/auth/authSlice";
 const Register = () => {
   const dispatch = useDispatch();
 
-  const { error, message } = useSelector(state => state.auth);
+  const { error, message } = useSelector((state) => state.auth);
 
   const [input, setInput] = useState({
     name: "",
     email: "",
     password: "",
-    cpassword: ""
+    cpassword: "",
   });
 
   // handle input change
-  const handleInputChange = e => {
-    setInput(prevState => ({
+  const handleInputChange = (e) => {
+    setInput((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
-  const handleUserRegister = e => {
+  // handle user register
+  const handleUserRegister = (e) => {
     e.preventDefault();
 
     if (!input.name || !input.email || !input.password || !input.cpassword) {
       sweetalertStandard(
         {
           title: "Form error",
-          msg: "All fields are required"
+          msg: "All fields are required",
         },
         "error"
       );
@@ -42,7 +43,7 @@ const Register = () => {
       sweetalertStandard(
         {
           title: "Password error",
-          msg: "Please not matched"
+          msg: "Please not matched",
         },
         "error"
       );
@@ -51,7 +52,7 @@ const Register = () => {
         createUser({
           name: input.name,
           email: input.email,
-          password: input.password
+          password: input.password,
         })
       );
 
@@ -59,7 +60,7 @@ const Register = () => {
         name: "",
         email: "",
         password: "",
-        cpassword: ""
+        cpassword: "",
       });
     }
   };
